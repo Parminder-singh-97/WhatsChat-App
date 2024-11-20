@@ -21,7 +21,7 @@ const LeftSide = ({ sendDataToParent }) => {
 
   return (
     <section className="leftSide w-[40%]  leftBg relative  ">
-      <div className="p-4 h-[10vh] flex justify-between items-center shadow-lg w-full      leftHeader text-white text-3xl font-bold">
+      <div className="p-4 h-[10vh] flex justify-between items-center shadow-lg w-full leftHeader text-white text-3xl font-bold">
         <h2 className=" ">Chats</h2>
         <div className="  flex justify-between items-center gap-4">
           <div className="editIcon flex justify-between items-center ">
