@@ -11,8 +11,9 @@ const DataProvider = ({ children }) => {
             .then((response) => response.json())
             .then((responseData) => setData(responseData.results))
             .catch((error) => console.error(error));
-    }, []);
+    },[]);
 
+    
     return (
         <UserContext.Provider value={data}>
             {children}

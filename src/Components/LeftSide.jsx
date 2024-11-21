@@ -1,21 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { UserContext } from "../Data";
+import {fetchUserData} from '../Store/dataSlice'
+import { useDispatch,useSelector } from "react-redux";
 
 const LeftSide = ({ sendDataToParent }) => {
+
+  const dispatch =useDispatch()
+  const users = useSelector(state => state.data)
+  console.log(users)
+
+  
+  
   const Users = useContext(UserContext);
+  
+  const [searchUser, setSearchUser] = useState([]);
 
-  // const [showChat, setShowChat] = useState(false);
-  const [searchUser, setSearchUser] = useState("");
+  const [ChatUserClick, setChatUserClick] = useState([]);
 
-  const [ChatUserClick, setChatUserClick] = useState();
+  useEffect(()=>{
 
-  // console.log(ChatUserClick)
+    dispatch(fetchUserData())
+
+  },[])
+
 
   const ShowChat = (user) => {
-    // setShowChat(true);
-
     sendDataToParent(ChatUserClick);
   };
 
