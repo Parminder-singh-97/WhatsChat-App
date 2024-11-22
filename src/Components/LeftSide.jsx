@@ -2,37 +2,30 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { UserContext } from "../Data";
-import {fetchUserData} from '../Store/dataSlice'
-import { useDispatch,useSelector } from "react-redux";
+import { fetchUserData } from "../Store/dataSlice";
+import { showUser, userClicked } from "../Store/clickedUserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const LeftSide = ({ sendDataToParent }) => {
+  const dispatch = useDispatch();
 
-  const dispatch =useDispatch()
-  const users = useSelector(state => state.data)
-  console.log(users)
-
-  
-  
   const Users = useContext(UserContext);
-  
-  const [searchUser, setSearchUser] = useState([]);
 
+  const [clickUser, setClickUser] = useState(false);
   const [ChatUserClick, setChatUserClick] = useState([]);
 
-  useEffect(()=>{
-
-    dispatch(fetchUserData())
-
-  },[])
-
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, []);
 
   const ShowChat = (user) => {
     sendDataToParent(ChatUserClick);
+    setClickUser(!clickUser);
   };
 
   return (
-    <section className="leftSide w-[40%]  leftBg relative  ">
-      <div className="p-4 h-[10vh] flex justify-between items-center shadow-lg w-full leftHeader text-white text-3xl font-bold">
+    <section className="leftSide w-[40%] h-auto  leftBg relative  ">
+      <div className="p-4 h-[70px] flex justify-between items-center shadow-lg w-full leftHeader text-white text-3xl font-bold">
         <h2 className=" ">Chats</h2>
         <div className="  flex justify-between items-center gap-4">
           <div className="editIcon flex justify-between items-center ">
@@ -62,8 +55,9 @@ const LeftSide = ({ sendDataToParent }) => {
               className="flex items-center gap-4 p-4 cursor-pointer hover:bg-green-950"
               onClick={() => {
                 setChatUserClick(users);
-
+                dispatch(showUser(users));
                 ShowChat();
+                dispatch(userClicked(clickUser));
               }}
             >
               <div className="userImage border-green-500 border-[3px] w-[45px] h-[45px] rounded-full bg-gray-300 overflow-hidden">

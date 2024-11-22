@@ -20,8 +20,10 @@ const App = () => {
       <section className=" w-[100vw] overflow-x-auto  flex justify-end h-[100vh] bg-slate-950 relative">
         <SideBar />
         <LeftSide sendDataToParent={handledataFromChild} />
+<section className="w-[55%]">
 
         <RightSide ClickedUserData={ClickedUserData}  />
+</section>
       </section>
     </>
   );

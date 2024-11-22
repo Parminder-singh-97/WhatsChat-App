@@ -33,15 +33,12 @@ export function fetchUserData() {
     dispatch(setStatus(STATUS.LOADING));
 
     try {
-      const res = await fetch(
-         "https://randomuser.me/api/?results=15"
-      );
+      const res = await fetch("https://randomuser.me/api/?results=15");
       const data = await res.json();
       dispatch(addData(data));
       dispatch(setStatus(STATUS.SUCCESS));
     } catch (err) {
-
-        dispatch(setStatus(STATUS.ERROR));
+      dispatch(setStatus(STATUS.ERROR));
       console.error(err);
     }
   };
