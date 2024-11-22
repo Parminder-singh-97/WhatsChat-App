@@ -1,5 +1,7 @@
+
 @tailwind base;
 @tailwind components;
+
 @tailwind utilities;
 
 * {
@@ -11,18 +13,26 @@
   background-color: black
 }
 .leftBg {
-  background-color: rgb(38, 16, 77);
+  background-color: rgb(11, 44, 1);
 }
 .leftHeader {
-  background-color: rgb(69, 27, 139);
+  background-color: rgb(1, 83, 12);
 }
 .rightHeader {
-  background-color: rgb(69, 27, 139);
+  background-color: rgb(1, 83, 12);
 }
 .rightBg {
-  background-color: rgb(27, 11, 54);
+  background-color: rgb(11, 44, 1);
 }
 
 .noscroll {
   scrollbar-width: none !important;
 }
+
+.sidebarWidth {
+
+  width: 300px !important;
+
+}
+
+

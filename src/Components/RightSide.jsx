@@ -20,7 +20,7 @@ const RightSide = () => {
 
     return (
       <div className="flex flex-col justify-center items-center h-full w-full text-center">
-        <h1 className="text-4xl text-gray-700">click On User wait For Users</h1>
+        <h1 className="text-4xl text-gray-700">Click On User or wait For Users</h1>
       </div>
     );
   }else {
@@ -37,13 +37,13 @@ const RightSide = () => {
               <div className="userChatHead flex flex-col justify-center">
                 <div className="userName text-white text-[18px] leading-tight">
                   {singleUser.name}
-                  <p className="messageText text-gray-400 text-[10px]">online</p>
+                  <p className="messageText text-gray-300 text-[10px]">online</p>
                 </div>
               </div>
             </div>
   
             <div className="flex justify-between items-center gap-4">
-              <div className="flex gap-4 bg-indigo-900 p-3 rounded-2xl">
+              <div className="flex gap-4 bg-green-800 p-3 rounded-2xl">
                 <CiVideoOn className="size-[25px] text-white cursor-pointer" />
                 <IoCallOutline className="size-[25px] text-white cursor-pointer" />
               </div>

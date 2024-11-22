@@ -33,7 +33,7 @@ export function fetchUserData() {
     dispatch(setStatus(STATUS.LOADING));
 
     try {
-      const res = await fetch("https://randomuser.me/api/?results=15");
+      const res = await fetch("https://randomuser.me/api/?results=20");
       const data = await res.json();
       dispatch(addData(data));
       dispatch(setStatus(STATUS.SUCCESS));

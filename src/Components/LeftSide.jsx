@@ -14,9 +14,24 @@ const LeftSide = ({ sendDataToParent }) => {
   const [clickUser, setClickUser] = useState(false);
   const [ChatUserClick, setChatUserClick] = useState([]);
 
+  
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [filteredUsers, setFilteredUsers] = useState(Users); 
+  console.log(filteredUsers)
+
   useEffect(() => {
     dispatch(fetchUserData());
   }, []);
+
+   // Update filtered users when search term or Users changes
+   useEffect(() => {
+    const result = Users.filter((user) =>
+      `${user.name.first} ${user.name.last}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+    setFilteredUsers(result);
+  }, [searchTerm, Users]);
 
   const ShowChat = (user) => {
     sendDataToParent(ChatUserClick);
@@ -37,12 +52,14 @@ const LeftSide = ({ sendDataToParent }) => {
           </div>
         </div>
       </div>
-      <div className="search_user h-[10vh] flex justify-center items-center shadow-md shadow-black ">
+      <div className="search_user h-[10vh] flex justify-center items-center shadow-md shadow-black">
         <input
           type="text"
           name="searchUser"
           id="searchUser"
-          className="w-[95%]  p-3 rounded-lg text-white bg-white"
+          value={searchTerm} // Controlled input
+          onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+          className="w-[95%] p-3 rounded-lg text-black bg-white"
           placeholder="Search or Start New Chat"
         />
       </div>
